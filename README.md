@@ -6,7 +6,7 @@ Play it [here](https://lisianthus1228.github.io/lisianthus/). As of now there is
 To start off click the spinning arkhalis to get the main currency.
 
 # Keyboard Shortcuts
-- These can be held to buy many very quickly.
+- These can be held to buy many "buildings" very quickly.
 
 G: Buys guide.
 E: Buys enchanted sword.
