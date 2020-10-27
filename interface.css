@@ -1,0 +1,54 @@
+body{
+	background-color: #181818;
+	color: #ffffff;
+	font-family:"Lucida Console";
+	margin: auto;
+	text-align: center;
+	font-size: 32px;
+}
+
+
+p.buildingText {
+	font-size:15px; 
+	display:inline-block; 
+	color: #bcbcbc;
+}
+	
+img.arkhalisSpin:hover{
+	cursor: pointer;
+	height: auto;
+	transform: scale(1.2);
+}
+
+button.buttonClickUpgrade{
+	background-color:#d9d9d9;
+	text-align: center;
+	display: inline-block;
+	font-size:12px;
+	border-radius:3px;
+	padding: 3px 10px;
+	
+	border: 1.5px solid #efefef;
+	outline: none;
+	margin-top:15px;
+}
+button.buttonClickUpgrade:hover{
+	background-color:#d9d9d9;
+	text-align: center;
+	display: inline-block;
+	font-size:13px;
+	border-radius:3px;
+	padding: 4px 11px;
+	
+	border: 1.5px solid #00ccff;
+	transition-duration:0.35s;
+	outline:none;
+}
+
+footer{
+	display:inline-block;
+	font-size:12px;
+	color:#bcbcbc;
+	margin-top:10px;
+	background-color:#212121;
+}

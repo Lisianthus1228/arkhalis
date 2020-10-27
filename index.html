@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="main.js"></script>
+		
+		<title>Arkhalis Collector</title>
+		<link rel="icon" type="image/png" href="images/ArkhalisIcon.png">
+		
+		<meta name="Arkhalis Collector" content="A game about getting the Arkhalis, many Arkhalis." charset="utf-8">
+		
+		<link rel="stylesheet" type="text/css" href="interface.css" />
+		
+	</head>
+	<!-- HEAD ^ ------------------ BODY v -------------------->
+	<body>
+	
+		<button onClick="arkhalisClick(70000)">Cheat</button>
+		<br />
+
+		<!-- DISPLAY COUNTERS -->
+		<p style="font-size:28px; color: #cdcdcd">
+			You have found
+			<span id="arkhalisCount" style="font-size:39px; color: white; font-weight:bold; text-shadow:0 0 5px #eeeeee">0</span> 
+			Arkhalis.
+		</p>
+		
+		<p style="font-size:14px; color: #bcbcbc">
+		You are finding
+		<span id="arkhalisPerSec" style="font-size:20px; color: white; font-weight:bold; text-shadow:0 0 3px #eeeeee">0</span> arkhalis per second. 
+		<span style="font-size:11px; color: #5a5a5a">(APS)</span> 
+		</p>
+		
+		<p style="font-size:14px; color: #bcbcbc">
+		You are getting
+		<span id="arkhalisPerClick" style="font-size:20px; color: white; font-weight:bold; text-shadow:0 0 3px #eeeeee">1</span> arkhalis per click. 
+		<span style="font-size:11px; color: #5a5a5a"> (APC) </span> 
+		</p>
+		<!-- END DISPLAY COUNTERS -->
+		
+			
+		<!-- Arkhalis gif -->
+		<img src="images/ArkhalisSpin.png" alt="The Arkhalis" width="128" height="128" onclick="arkhalisClick(1)" class="arkhalisSpin">
+		
+		<br />
+		<br />
+		
+		<!-- Guide NPC +1 APS -->
+		<img src="images/Guide.png" alt="Guide NPC" style="display: inline-block; vertical-align:middle" width="36" height="66" >
+		<p style="font-size:13px; display:inline-block; color: #7b7b7b">+1 APS
+		<button  class="buttonClickUpgrade" onClick="buyGuide()" style="display: inline-block">Hire a guide.</button>
+		<span style="font-size:12px; color: #5a5a5a">(G)</span> </p>
+		<br />
+			<p class="buildingText"> Guides: 
+			<span id="guides" style="font-size:18px;color:#ffffff"> 0 </span> 
+			</p>
+			<p class="buildingText"> Cost: 
+			<span id="guideCost" style="font-size:18px;color:#ffffff"> 10 </span> 
+			</p>
+		
+		<br />
+		<br />
+		
+		<!-- Increase arkhalisClick amount (+1) -->
+		<img src="images/EnchantedSword.png" alt="Enchanted Sword" style="display: inline-block; vertical-align:middle" height="48" width="48">
+		<p style="font-size:13px; display:inline-block; color: #7b7b7b"> +1 APC
+		<button class="buttonClickUpgrade" onClick="buyClickUpgrade()" style="display:inline-block">Buy an enchanted sword.</button>
+		<span style="font-size:12px; color: #5a5a5a">(E)</span> </p>
+		<br />
+			<p class="buildingText">Ench. Swords: 
+			<span id="enchantedSwords" style="font-size:18px;color:#ffffff"> 0 </span>
+			</p>
+			<p class="buildingText">Cost: 
+			<span id="enchantedSwordCost" style="font-size:18px;color:#ffffff"> 30 </span> 
+			</p>
+			
+		<br />
+		<br />
+		
+		<!-- Increase both by +5 -->
+		<img src="images/NightsEdge.png" alt="Nights Edge" style="display: inline-block; vertical-align:middle" height="48" width="48">
+		<p style="font-size:13px; display:inline-block; color: #7b7b7b"> +5 APC/S
+		<button class="buttonClickUpgrade" onClick="buyNightEdge()" style="display:inline-block">Buy a nights edge.</button>
+		<span style="font-size:12px; color: #5a5a5a">(N)</span> </p>
+		<br />
+			<p class="buildingText">Nights Edges:
+			<span id="nightsEdges" style="font-size:18px;color:#ffffff"> 0 </span>
+			</p>
+			<p class="buildingText">Cost: 
+			<span id="nightsEdgeCost" style="font-size:18px;color:#ffffff"> 400 </span> 
+			</p>
+			
+		
+		<br />
+		<br />
+		
+		<img src="images/BHS.png" alt="Broken Hero Sword" style="display: inline-block; vertical-align:middle" height="48" width="48">
+		<p style="font-size:13px; display:inline-block; color: #7b7b7b"> +20% NE Effect 
+		<button class="buttonClickUpgrade" onClick="buyBHS()" style="display:inline-block">Buy a broken hero sword.</button>
+		<span style="font-size:12px; color: #5a5a5a">(B)</span> </p>
+			
+			<br />
+			<p class="buildingText">Cost: 
+			<span id="BHSLimitCost" style="font-size:18px;color:#ffffff">16</span> <span style="font-size:10px; color: #5a5a5a">(Nights Edges)</span>
+			<button class="buttonClickUpgrade" onClick="buyBHSLimit()" style="display:inline-block">Increase limit.</button>
+			<span style="font-size:12px; color: #5a5a5a">(H)</span> </p>
+			
+			<br />
+			<p class="buildingText">Broken Hero Swords:
+			<span id="BHSTotal" style="font-size:18px;color:#ffffff"> 0 </span> / <span id="BHSLimit" style="font-size:18px;color:#ffffff"> 20 </span>
+			</p>
+			<p class="buildingText">Cost: 
+			<span id="BHSCost" style="font-size:18px;color:#ffffff"> 1600 </span> 
+			</p>
+			
+		<br />
+		
+		<footer>
+			<p id="pageFooter">Author: Lisianthus</p>
+		</footer>
+		
+	</body>
+</html>
