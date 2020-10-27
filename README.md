@@ -8,9 +8,9 @@ To start off click the spinning arkhalis to get the main currency.
 # Keyboard Shortcuts
 - These can be held to buy many "buildings" very quickly.
 
-G: Buys guide.	
-E: Buys enchanted sword.	
-N: Buys night's edge.	
-B: Buys broken hero sword.	
-H: Buys limit upgrade to broken hero swords.	
-	
+G: Buys guide.  
+E: Buys enchanted sword.  
+N: Buys night's edge.  
+B: Buys broken hero sword.  
+H: Buys limit upgrade to broken hero swords.  
+
