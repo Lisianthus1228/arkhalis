@@ -11,9 +11,12 @@
 		<link rel="stylesheet" type="text/css" href="interface.css" />
 		
 	</head>
-	<!-- HEAD ^ ------------------ BODY v -------------------->
-	<body>
-
+	
+	<body onLoad="loadGameLocal()">
+		<button class="optionButton" onClick="saveGameLocal()">Save Game</button>
+		<button class="optionButton" onClick="loadGameLocal()">Load Game</button>
+		<button class="optionButton" onClick="deleteGameLocal()">Delete Save</button>
+		
 		<!-- DISPLAY COUNTERS -->
 		<p style="font-size:28px; color: #cdcdcd">
 			You have found

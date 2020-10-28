@@ -15,6 +15,11 @@ document.addEventListener('keydown', function(event){
 	else if(event.keyCode == 72){
 		buyBHSLimit()
 	}
+	
+	//Developer increase for testing purposes:
+	else if(event.keyCode == 119){
+		arkhalisClick(65432)
+	}
 });
 
 //Function for clicking main button 
@@ -121,3 +126,112 @@ window.setInterval(function(){
 	document.getElementById('arkhalisCount').innerHTML = arkhalisCount;
 	
 }, 20);
+
+function saveGameLocal(){
+	var saveGame = {
+	arkhalisCount: arkhalisCount,
+	guides: guides,
+	enchantedSwords: enchantedSwords,
+	nightsEdges: nightsEdges,
+	BHSTotal: BHSTotal,
+	BHSLimitTotal: BHSLimitTotal
+	}
+	localStorage.setItem("saveGame",JSON.stringify(saveGame));
+}
+function loadGameLocal(){
+	var loadedGame = JSON.parse(localStorage.getItem("saveGame"));
+	//Load in important variables.
+	arkhalisCount = loadedGame.arkhalisCount;
+	
+	guides = loadedGame.guides;
+	document.getElementById('guides').innerHTML = guides;
+	
+	enchantedSwords = loadedGame.enchantedSwords;
+	document.getElementById('enchantedSwords').innerHTML = enchantedSwords;
+	
+	nightsEdges = loadedGame.nightsEdges;
+	document.getElementById('nightsEdges').innerHTML = nightsEdges;
+	
+	BHSTotal = loadedGame.BHSTotal;
+	document.getElementById('BHSTotal').innerHTML = BHSTotal;
+	
+	BHSLimitTotal = loadedGame.BHSLimitTotal;
+	BHSLimit = 20+(BHSLimitTotal*10);
+	document.getElementById('BHSLimit').innerHTML = 20+(BHSLimitTotal*10);
+	
+	//Re-calculate values such as APS,APC,etc. with variables.
+	arkhalisCount = Math.round(arkhalisCount);
+	document.getElementById('arkhalisCount').innerHTML = arkhalisCount;
+	
+	var arkhalisPerSec = guides + ((nightsEdges*5) * ((100+(BHSTotal*20)) / 100));
+	var arkhalisPerSec = arkhalisPerSec.toFixed(0);
+	document.getElementById('arkhalisPerSec').innerHTML = arkhalisPerSec;
+	
+	var arkhalisPerClick = 1 + enchantedSwords + ((nightsEdges*5) * ((100+(BHSTotal*20)) / 100));
+	var arkhalisPerClick = arkhalisPerClick.toFixed(0);
+	document.getElementById('arkhalisPerClick').innerHTML = arkhalisPerClick;
+	
+	//Re-calculate building costs
+	var guideCost = Math.floor(10 * Math.pow(1.0725,guides));
+	document.getElementById('guideCost').innerHTML = guideCost;
+	
+	var enchantedSwordCost = Math.floor(30 * Math.pow(1.125,enchantedSwords));
+	document.getElementById('enchantedSwordCost').innerHTML = enchantedSwordCost;
+	
+	var nightsEdgeCost = Math.floor(400 * Math.pow(1.15,nightsEdges));
+	document.getElementById('nightsEdgeCost').innerHTML = nightsEdgeCost;
+	
+	var BHSCost = Math.floor(1600 * Math.pow(1.125,BHSTotal));
+	document.getElementById('BHSCost').innerHTML = BHSCost;
+	
+	var BHSLimitCost = Math.floor(16 * (1+BHSLimitTotal))
+	document.getElementById('BHSLimitCost').innerHTML = BHSLimitCost;
+}
+function deleteGameLocal(){
+	localStorage.removeItem("saveGame")
+	arkhalisCount = 0;
+	
+	guides = 0;
+	document.getElementById('guides').innerHTML = guides;
+	
+	enchantedSwords = 0;
+	document.getElementById('enchantedSwords').innerHTML = enchantedSwords;
+	
+	nightsEdges = 0;
+	document.getElementById('nightsEdges').innerHTML = nightsEdges;
+	
+	BHSTotal = 0;
+	document.getElementById('BHSTotal').innerHTML = BHSTotal;
+	
+	BHSLimitTotal = 0;
+	BHSLimit = 20+(BHSLimitTotal*10);
+	document.getElementById('BHSLimit').innerHTML = 20+(BHSLimitTotal*10);
+	
+	//Re-calculate values such as APS,APC,etc. with variables.
+	arkhalisCount = Math.round(arkhalisCount);
+	document.getElementById('arkhalisCount').innerHTML = arkhalisCount;
+	
+	var arkhalisPerSec = guides + ((nightsEdges*5) * ((100+(BHSTotal*20)) / 100));
+	var arkhalisPerSec = arkhalisPerSec.toFixed(0);
+	document.getElementById('arkhalisPerSec').innerHTML = arkhalisPerSec;
+	
+	var arkhalisPerClick = 1 + enchantedSwords + ((nightsEdges*5) * ((100+(BHSTotal*20)) / 100));
+	var arkhalisPerClick = arkhalisPerClick.toFixed(0);
+	document.getElementById('arkhalisPerClick').innerHTML = arkhalisPerClick;
+	
+	//Re-calculate building costs
+	var guideCost = Math.floor(10 * Math.pow(1.0725,guides));
+	document.getElementById('guideCost').innerHTML = guideCost;
+	
+	var enchantedSwordCost = Math.floor(30 * Math.pow(1.125,enchantedSwords));
+	document.getElementById('enchantedSwordCost').innerHTML = enchantedSwordCost;
+	
+	var nightsEdgeCost = Math.floor(400 * Math.pow(1.15,nightsEdges));
+	document.getElementById('nightsEdgeCost').innerHTML = nightsEdgeCost;
+	
+	var BHSCost = Math.floor(1600 * Math.pow(1.125,BHSTotal));
+	document.getElementById('BHSCost').innerHTML = BHSCost;
+	
+	var BHSLimitCost = Math.floor(16 * (1+BHSLimitTotal))
+	document.getElementById('BHSLimitCost').innerHTML = BHSLimitCost;
+}

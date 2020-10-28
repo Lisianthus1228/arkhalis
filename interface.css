@@ -20,6 +20,36 @@ img.arkhalisSpin:hover{
 	transform: scale(1.2);
 }
 
+button{
+	font-family: Consolas;
+	font-size: 0.5em;
+}
+button.optionButton{
+	background-color:#d9d9d9;
+	text-align: center;
+	display: inline-block;
+	font-size:12px;
+	border-radius:3px;
+	padding: 5px 12px;
+	font-weight: bold;
+	
+	border: 1.5px solid #efefef;
+	outline: none;
+}
+button.optionButton:hover{
+	background-color:#d9d9d9;
+	text-align: center;
+	display: inline-block;
+	font-size:13px;
+	border-radius:3px;
+	padding: 6px 13px;
+	font-weight: bold;
+	
+	border: 1.5px solid #00ccff;
+	transition-duration:0.35s;
+	outline:none;
+}
+
 button.buttonClickUpgrade{
 	background-color:#d9d9d9;
 	text-align: center;
