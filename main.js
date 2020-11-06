@@ -1,7 +1,8 @@
+//--------MAIN CODE----------
 var arkhalisCount = 0;
 document.addEventListener('keydown', function(event){
 	if(event.keyCode == 71){
-		buyGuide()
+		buyGuide(1)
 	}
 	else if(event.keyCode == 69){
 		buyClickUpgrade()
@@ -35,15 +36,15 @@ function arkhalisIncrement(number){
 
 //Function for guides, increase APS by +1
 var guides = 0;
-function buyGuide(){
-	var guideCost = Math.floor(10 * Math.pow(1.0725,guides));
+function buyGuide(guideBuyAmount){
+	var guideCost = Math.floor(10 * Math.pow(1.0725,(guides+guideBuyAmount)));
 	if (arkhalisCount >= guideCost){
-		guides = guides + 1;
+		guides = guides + guideBuyAmount;
 		arkhalisCount = arkhalisCount - guideCost;
 		document.getElementById('guides').innerHTML = guides;
 		document.getElementById('arkhalisCount').innerHTML = arkhalisCount;
 	};
-	var guideCost = Math.floor(10 * Math.pow(1.0725,guides));
+	var guideCost = Math.floor(10 * Math.pow(1.0725,(guides+1)));
 	document.getElementById('guideCost').innerHTML = guideCost;
 };
 //Function for Ench. Swords, increases ACP by +1
