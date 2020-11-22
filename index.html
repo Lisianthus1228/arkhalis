@@ -14,10 +14,6 @@
 	
 	<body onLoad="loadGameLocal()">
 		<table>
-			<tr style="display: none;">
-				<td> <button class="optionButton" onClick="openPage('Arkhalis')">Arkhalis</button> </td>
-				<td> <button class="optionButton" onClick="openPage('terraBlade')">Terrablade</button> </td>
-			</tr>
 			<tr>
 				<td> <button class="optionButton" onClick="saveGameLocal()">Save Game</button> </td>
 				<td> <button class="optionButton" onClick="loadGameLocal()">Load Game</button> </td>
@@ -25,54 +21,67 @@
 			</tr>
 		</table>
 		
-		<div id="Arkhalis">
-			<!-- DISPLAY COUNTERS -->
-			<p style="font-size:28px; color: #cdcdcd">
-				You have found
-				<span id="arkhalisCount" style="font-size:39px; color: white; font-weight:bold; text-shadow:0 0 5px #eeeeee">0</span> 
-				Arkhalis.
-			</p>
+		<!-- DISPLAY COUNTERS -->
+		<p style="font-size:28px; color: #cdcdcd">
+			You have found
+			<span id="arkhalisCount" style="font-size:39px; color: white; font-weight:bold; text-shadow:0 0 5px #eeeeee">0</span> 
+			Arkhalis.
+		</p>
+		
+		<p style="font-size:14px; color: #bcbcbc">
+		You are finding
+		<span id="arkhalisPerSec" style="font-size:20px; color: white; font-weight:bold; text-shadow:0 0 3px #eeeeee">0</span> arkhalis per second. 
+		<span style="font-size:11px; color: #5a5a5a">(APS)</span> 
+		</p>
+		
+		<p style="font-size:14px; color: #bcbcbc">
+		You are getting
+		<span id="arkhalisPerClick" style="font-size:20px; color: white; font-weight:bold; text-shadow:0 0 3px #eeeeee">1</span> arkhalis per click. 
+		<span style="font-size:11px; color: #5a5a5a"> (APC) </span> 
+		</p>
+		<!-- END DISPLAY COUNTERS -->
+		
 			
-			<p style="font-size:14px; color: #bcbcbc">
-			You are finding
-			<span id="arkhalisPerSec" style="font-size:20px; color: white; font-weight:bold; text-shadow:0 0 3px #eeeeee">0</span> arkhalis per second. 
-			<span style="font-size:11px; color: #5a5a5a">(APS)</span> 
-			</p>
+		<!-- Arkhalis gif -->
+		<img src="images/ArkhalisSpin.png" alt="The Arkhalis" width="128" height="128" onclick="arkhalisClick(clickerValue)" class="arkhalisSpin">
+		<br /><br />
+		
+		<button onClick="switchTabs('prestigeTier1')" class="tabButton">Pre-Hardmode</button>
+		<button onClick="switchTabs('prestigeTier2')" class="tabButton">Hardmode</button>
+		
+		<div id="prestigeTier1" style="display: none;">
+			<br />
 			
-			<p style="font-size:14px; color: #bcbcbc">
-			You are getting
-			<span id="arkhalisPerClick" style="font-size:20px; color: white; font-weight:bold; text-shadow:0 0 3px #eeeeee">1</span> arkhalis per click. 
-			<span style="font-size:11px; color: #5a5a5a"> (APC) </span> 
-			</p>
-			<!-- END DISPLAY COUNTERS -->
-			
-				
-			<!-- Arkhalis gif -->
-			<img src="images/ArkhalisSpin.png" alt="The Arkhalis" width="128" height="128" onclick="arkhalisClick(1)" class="arkhalisSpin">
+			<!-- UPGRADES -->
+			<button class="upgradeButton" id="copperswordUpgrade" onClick="buyCopperswortshord()">
+				<img src="images/upgrade/coppersword.png" id="copperSword">
+			</button>
+			<div id="copperswordDesc">
+				<p class="smallDesc"> Increase APC by +1
+				Cost: <span style="color:#ffffff;">100</span> 
+				</p>
+			</div>
+
 			
 			<br />
-			<br />
-			
 			<!-- Guide NPC +1 APS -->
-			<button  class="buttonClickUpgrade" onClick="buyGuide(5)" style="display: inline-block;font-size: 10px;">Hire x5</button>
 			<img src="images/Guide.png" alt="Guide NPC" style="display: inline-block; vertical-align:middle" width="36" height="66" >
-			<p style="font-size:13px; display:inline-block; color: #7b7b7b">+1 APS
-			<button  class="buttonClickUpgrade" onClick="buyGuide(1)" style="display: inline-block">Hire a guide.</button>
+			<p class="smallDesc">+1 APS
+			<button  class="buttonClickUpgrade" onClick="buyGuide()" style="display: inline-block">Hire a guide.</button>
 			<span style="font-size:12px; color: #5a5a5a">(G)</span> </p>
 			<br />
 				<p class="buildingText"> Guides: 
 				<span id="guides" style="font-size:18px;color:#ffffff"> 0 </span> 
 				</p>
 				<p class="buildingText"> Cost: 
-				<span id="guideCost" style="font-size:18px;color:#ffffff"> 10 </span> 
+				<span id="guideCost" style="font-size:18px;color:#ffffff"> 10 </span>			
 				</p>
-			
-			<br />
-			<br />
+		
+			<br /><br />
 			
 			<!-- Increase arkhalisClick amount (+1) -->
 			<img src="images/EnchantedSword.png" alt="Enchanted Sword" style="display: inline-block; vertical-align:middle" height="48" width="48">
-			<p style="font-size:13px; display:inline-block; color: #7b7b7b"> +1 APC
+			<p class="smallDesc"> +1 APC
 			<button class="buttonClickUpgrade" onClick="buyClickUpgrade()" style="display:inline-block">Buy an enchanted sword.</button>
 			<span style="font-size:12px; color: #5a5a5a">(E)</span> </p>
 			<br />
@@ -81,14 +90,13 @@
 				</p>
 				<p class="buildingText">Cost: 
 				<span id="enchantedSwordCost" style="font-size:18px;color:#ffffff"> 30 </span> 
-				</p>
+				</p>	
 				
-			<br />
-			<br />
+			<br /><br />
 			
 			<!-- Increase both by +5 -->
 			<img src="images/NightsEdge.png" alt="Nights Edge" style="display: inline-block; vertical-align:middle" height="48" width="48">
-			<p style="font-size:13px; display:inline-block; color: #7b7b7b"> +5 APC/S
+			<p class="smallDesc"> +5 APC/S
 			<button class="buttonClickUpgrade" onClick="buyNightEdge()" style="display:inline-block">Buy a nights edge.</button>
 			<span style="font-size:12px; color: #5a5a5a">(N)</span> </p>
 			<br />
@@ -100,11 +108,10 @@
 				</p>
 				
 			
-			<br />
-			<br />
+			<br /><br />
 			
 			<img src="images/BHS.png" alt="Broken Hero Sword" style="display: inline-block; vertical-align:middle" height="48" width="48">
-			<p style="font-size:13px; display:inline-block; color: #7b7b7b"> +20% NE Effect 
+			<p class="smallDesc"> +20% NE Effect 
 			<button class="buttonClickUpgrade" onClick="buyBHS()" style="display:inline-block">Buy a broken hero sword.</button>
 			<span style="font-size:12px; color: #5a5a5a">(B)</span> </p>
 				
@@ -123,7 +130,15 @@
 				</p>
 		</div>
 		
-		<div id="terraBlade">
+		<div id="prestigeTier2" style="display: none;">
+			<!-- Prestige arkhalis to souls. -->
+			<p class="buildingText">You have <span id="soulTotal" style="font-size:16px;color:#ffffff;">0</span> souls.</p>
+			<br />
+			
+			<img src="images/Soul.png" alt="Soul of Blight" style="display: inline-block; vertical-align:middle" width="24" height="24" >
+			<p style="font-size:13px; display:inline-block; color: #7b7b7b">Convert arkhalis to <span id="soulIncrement">0</span> souls. </p>
+			<button  class="buttonClickUpgrade" onClick="convertToSouls(arkhalisCount)" style="display: inline-block">Convert</button>
+				
 		</div>
 		
 		<br />

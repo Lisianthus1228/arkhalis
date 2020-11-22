@@ -1,5 +1,6 @@
 //--------MAIN CODE----------
 var arkhalisCount = 0;
+var clickerValue = 1;
 document.addEventListener('keydown', function(event){
 	if(event.keyCode == 71){
 		buyGuide(1)
@@ -18,10 +19,18 @@ document.addEventListener('keydown', function(event){
 	}
 	
 	//Developer increase for testing purposes:
-	else if(event.keyCode == 119){
-		arkhalisClick(65432)
+	else if(event.keyCode == 226){
+		arkhalisClick(50000)
 	}
 });
+
+// Switch tab
+tab = "prestigeTier1"
+function switchTabs(newtab){
+	document.getElementById(tab).style.display = "none";
+	document.getElementById(newtab).style.display = "block";
+	tab = newtab;
+}
 
 //Function for clicking main button 
 function arkhalisClick(number){
@@ -34,17 +43,39 @@ function arkhalisIncrement(number){
 	document.getElementById("arkhalisCount").innerHTML = arkhalisCount;
 };
 
+var soulIncrement = 0;
+var soulTotal = 0;
+function convertToSouls(number){
+	soulTotal = soulTotal + Math.round(number / 12000);
+	document.getElementById("soulTotal").innerHTML = soulTotal;
+	arkhalisCount = 0;
+	document.getElementById("arkhalisCount").innerHTML = arkhalisCount;
+}
+
+var CopperswortshordBought = 0;
+function buyCopperswortshord(){
+	if (CopperswortshordBought == 0){
+		if (arkhalisCount >= 100){
+			clickerValue = clickerValue + 1;
+			arkhalisCount = arkhalisCount - 100;
+			document.getElementById('arkhalisCount').innerHTML = arkhalisCount;
+			document.getElementById('copperSword').src = "images/upgrade/copperswordbought.png"
+			CopperswortshordBought = 1
+		}
+	}
+}
+
 //Function for guides, increase APS by +1
 var guides = 0;
-function buyGuide(guideBuyAmount){
-	var guideCost = Math.floor(10 * Math.pow(1.0725,(guides+guideBuyAmount)));
+function buyGuide(){
+	var guideCost = Math.floor(10 * Math.pow(1.0725,guides));
 	if (arkhalisCount >= guideCost){
-		guides = guides + guideBuyAmount;
+		guides = guides + 1;
 		arkhalisCount = arkhalisCount - guideCost;
 		document.getElementById('guides').innerHTML = guides;
 		document.getElementById('arkhalisCount').innerHTML = arkhalisCount;
 	};
-	var guideCost = Math.floor(10 * Math.pow(1.0725,(guides+1)));
+	var guideCost = Math.floor(10 * Math.pow(1.0725,guides));
 	document.getElementById('guideCost').innerHTML = guideCost;
 };
 //Function for Ench. Swords, increases ACP by +1
@@ -119,12 +150,15 @@ window.setInterval(function(){
 	var arkhalisPerSec = arkhalisPerSec.toFixed(0);
 	document.getElementById('arkhalisPerSec').innerHTML = arkhalisPerSec;
 	
-	var arkhalisPerClick = 1 + enchantedSwords + ((nightsEdges*5) * ((100+(BHSTotal*20)) / 100));
+	var arkhalisPerClick = clickerValue + enchantedSwords + ((nightsEdges*5) * ((100+(BHSTotal*20)) / 100));
 	var arkhalisPerClick = arkhalisPerClick.toFixed(0);
 	document.getElementById('arkhalisPerClick').innerHTML = arkhalisPerClick;
 	
 	arkhalisCount = Math.round(arkhalisCount);
 	document.getElementById('arkhalisCount').innerHTML = arkhalisCount;
+	
+	soulIncrement = Math.round(arkhalisCount / 12000)
+	document.getElementById('soulIncrement').innerHTML = soulIncrement;
 	
 }, 20);
 
@@ -187,6 +221,7 @@ function loadGameLocal(){
 	
 	var BHSLimitCost = Math.floor(16 * (1+BHSLimitTotal))
 	document.getElementById('BHSLimitCost').innerHTML = BHSLimitCost;
+	
 }
 function deleteGameLocal(){
 	localStorage.removeItem("saveGame")

@@ -1,5 +1,5 @@
 body{
-	background-color: #181818;
+	background-color: #1A1A1A;
 	color: #ffffff;
 	font-family:"Lucida Console";
 	margin: auto;
@@ -11,7 +11,6 @@ table{
 	margin-right: auto;
 	border-spacing: 4px;
 }
-
 p.buildingText {
 	font-size:15px; 
 	display:inline-block; 
@@ -26,10 +25,10 @@ img.arkhalisSpin:hover{
 
 button{
 	font-family: Consolas;
-	font-size: 0.5em;
+	font-size: 0.2em;
 }
 button.optionButton{
-	background-color:#d9d9d9;
+	background-color:#c7c7c7;
 	text-align: center;
 	display: inline-block;
 	font-size:12px;
@@ -41,6 +40,56 @@ button.optionButton{
 	outline: none;
 }
 button.optionButton:hover{
+	background-color:#c7c7c7;
+	text-align: center;
+	display: inline-block;
+	font-size:13px;
+	border-radius:3px;
+	padding: 6px 13px;
+	font-weight: bold;
+	
+	border: 1.5px solid #00ccff;
+	transition-duration:0.35s;
+	outline:none;
+}
+
+button.tabButton{
+	background-color:#d9d9d9;
+	text-align: center;
+	display: inline-block;
+	font-size:15px;
+	border-radius:3px;
+	padding: 3px 11px;
+	
+	border: 1.5px solid #efefef;
+	outline: none;
+}
+button.tabButton:hover{
+	background-color:#d9d9d9;
+	text-align: center;
+	display: inline-block;
+	font-size:17px;
+	border-radius:3px;
+	padding: 4px 12px;
+	
+	border: 1.5px solid #00ccff;
+	transition-duration:0.35s;
+	outline:none;
+}
+
+button.tab{
+	background-color:#d9d9d9;
+	text-align: center;
+	display: inline-block;
+	font-size:12px;
+	border-radius:3px;
+	padding: 5px 12px;
+	font-weight: bold;
+	
+	border: 1.5px solid #efefef;
+	outline: none;
+}
+button.tab:hover{
 	background-color:#d9d9d9;
 	text-align: center;
 	display: inline-block;
@@ -72,11 +121,23 @@ button.buttonClickUpgrade:hover{
 	display: inline-block;
 	font-size:13px;
 	border-radius:3px;
-	padding: 4px 11px;
+	padding: 3px 10px;
 	
 	border: 1.5px solid #00ccff;
 	transition-duration:0.35s;
 	outline:none;
+}
+
+button.upgradeButton{
+	display: inline-block;
+	margin-top:10px;
+	
+	background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
 }
 
 footer{
@@ -85,4 +146,20 @@ footer{
 	color:#bcbcbc;
 	margin-top:10px;
 	background-color:#212121;
+	
+	min-height: calc(100vh-120px);
+}
+
+/* UPGRADE */
+.smallDesc{
+	font-size:13px;
+	display:inline-block;
+	color: #7b7b7b;
+}
+
+#copperswordDesc{
+	display: none;
+}
+#copperswordUpgrade:hover + #copperswordDesc{
+	display: block;
 }
