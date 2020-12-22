@@ -142,6 +142,7 @@ function buyBHSLimit(){
 window.setInterval(function(){ 
 	arkhalisIncrement(guides); //Adds APS from guides each second.
 	arkhalisIncrement((nightsEdges*5) * ((100+(BHSTotal*20)) / 100));
+	arkhalisIncrement(1.11**soulTotal)
 }, 1000); 
 
 //Updates APS and APC respectively.
@@ -169,7 +170,8 @@ function saveGameLocal(){
 	enchantedSwords: enchantedSwords,
 	nightsEdges: nightsEdges,
 	BHSTotal: BHSTotal,
-	BHSLimitTotal: BHSLimitTotal
+	BHSLimitTotal: BHSLimitTotal,
+	soulTotal: soulTotal,
 	}
 	localStorage.setItem("saveGame",JSON.stringify(saveGame));
 }
@@ -222,6 +224,9 @@ function loadGameLocal(){
 	var BHSLimitCost = Math.floor(16 * (1+BHSLimitTotal))
 	document.getElementById('BHSLimitCost').innerHTML = BHSLimitCost;
 	
+	soulTotal = loadedGame.soulTotal;
+	document.getElementById('soulTotal').innerHTML = soulTotal;
+	
 }
 function deleteGameLocal(){
 	localStorage.removeItem("saveGame")
@@ -268,6 +273,9 @@ function deleteGameLocal(){
 	var BHSCost = Math.floor(1600 * Math.pow(1.125,BHSTotal));
 	document.getElementById('BHSCost').innerHTML = BHSCost;
 	
-	var BHSLimitCost = Math.floor(16 * (1+BHSLimitTotal))
+	var BHSLimitCost = Math.floor(16 * (1+BHSLimitTotal));
 	document.getElementById('BHSLimitCost').innerHTML = BHSLimitCost;
+	
+	soulTotal = 0;
+	document.getElementById('soulTotal').innerHTML = soulTotal;
 }
